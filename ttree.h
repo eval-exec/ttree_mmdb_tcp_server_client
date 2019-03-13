@@ -46,8 +46,12 @@
 #include <sys/types.h>
 #include "ttree_defs.h"
 
+#include "ttree_defs.h"
 #define TCSR_END -1
 #define TCSR_OK   0
+
+
+
 
 enum {
     TNODE_UNDEF = -1, /**< T*-tree node side is undefined */

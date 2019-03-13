@@ -10,22 +10,44 @@
 
 void parseinput(char *string){
     char * delim;
-    delim = ",";
-    char * copy_string;
+    delim = " ";
+
     copy_string = malloc(100*sizeof(char));
+    memset(copy_string,0,100* sizeof(char));
     char * token;
     token = NULL;
 
-    token = strtok(copy_string,delim);
-    strcpy(par1,token);
+
+
+    par1 = malloc(50*sizeof(char));
+    par2 = malloc(50*sizeof(char));
+    par3 = malloc(50*sizeof(char));
+    memset(par1,0,50*sizeof(char));
+    memset(par2,0,50*sizeof(char));
+    memset(par3,0,50*sizeof(char));
+
+    strcpy(copy_string,string);
+    printf("%s is copystring \n",copy_string);
+    printf("%s is string \n",string);
+
     token = strtok(copy_string,delim);
 
     if (token != NULL){
+        printf("%s is token1 \n",token);
+        strcpy(par1,token);
+    }
+
+    token = strtok(NULL,delim);
+
+    if (token != NULL){
+        printf("%s is token2 \n",token);
+
         strcpy(par2,token);
     }
-    token = strtok(copy_string,delim);
-
+    token = strtok(NULL,delim);
     if (token != NULL){
+        printf("%s is token3 \n",token);
+
         strcpy(par3,token);
     }
     free(copy_string);
@@ -56,15 +78,15 @@ free(parf1);
     strcpy(buf, string);
 
 
-printf("buf:%s",buf);
+//printf("buf:%s",buf);
     token = strtok(buf, delim);
-printf("token0:\t%s\n",token);
+//printf("token0:\t%s\n",token);
 
     strcpy(parf0, token);
 
 
     token = strtok(NULL, delim);
-    printf("token1:\t%s\n",token);
+//    printf("token1:\t%s\n",token);
     if (token != NULL){
         token1 = 1;
 
@@ -75,24 +97,4 @@ free(buf);
 }
 
 
-//
-//    parametercount++;
-//    token = strtok(NULL, delim);
-//    if (token != NULL){
-//        par[parametercount] = malloc(sizeof(string));
-//        strcpy(par[parametercount], token);
-
-
-
-//
-//    all_items[bcount].key = strtol(par[0], NULL, 10);
-//    bcount++;
-//    hash_user_id = strtol(parameter[0], NULL, 10);
-//    strcpy(hash_name, parameter[1]);
-//
-//    printf("%ld,%s", hash_user_id, hash_name);
-//
-///////////////add_hash_table//////////////
-//    add_user(hash_user_id, hash_name);
-
-
+long int * insertkey;

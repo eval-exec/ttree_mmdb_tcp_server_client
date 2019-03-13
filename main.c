@@ -15,14 +15,13 @@
 #include "server_misc.h"
 
 
-#define MAX 8000
-#define PORT 8080
-#define SA struct sockaddr
 
+#define PORT 43594
+#define SA struct sockaddr
+Ttree ttree;
+int ret ;
 #include <string.h>
 // Function designed for chat between client and server.
-
-
 
 static int __cmpfunc(void *key1, void *key2)
 {
@@ -35,27 +34,29 @@ static void usage(const char *appname)
     exit(EXIT_SUCCESS);
 }
 FILE * fp;
-
+void * res;
 int bcount = 0;
-
 void func(int sockfd)
 {
-	char buff[MAX];
+	out_buff = malloc(1000* sizeof(char));
+	in_buff = malloc(100 * sizeof(char));
+	memset(out_buff,0,1000* sizeof(char));
 	int n;
-	// infinite loop for chat
 	for (;;) {
-		bzero(in_buff, MAX);
+		memset(in_buff,0, 100*sizeof(char));
 
-		// read the message from client and copy it in buffer
-		read (sockfd, in_buff, sizeof(in_buff));
-		printf("From client: %s \n\n", in_buff);
-        parseinput(in_buff);
+		while(  !recv(sockfd,in_buff,100,0)  );
+
+			printf("From client in_buff is : %s \n", in_buff);
+			parseinput(in_buff);
+
 
 		if (strcmp(par1, "INIT") == 0) {
 			COMMANDS = INIT;
 		}
 
 		if (strcmp(par1, "FIND") == 0) {
+			printf("receive FIND \n");
 			COMMANDS = FIND;
 		}
 
@@ -67,6 +68,14 @@ void func(int sockfd)
 			COMMANDS = OPENFILE;
 		}
 
+		if (strcmp(par1, "DELETE") == 0) {
+			printf("receive DELETE \n");
+			COMMANDS = DELETE;
+		}
+
+//
+//		printf("receive %s  but go UNKOWN \n",par1);
+//		COMMANDS = UNKNOW;
 
 		switch (COMMANDS) {
 			case INIT:
@@ -77,87 +86,121 @@ void func(int sockfd)
 					hash_user_id = strtol(parf0, NULL, 10);
 					strcpy(hash_name, parf1);
 					printf("%ld,%s", hash_user_id, hash_name);
-/////////////add_hash_table//////////////
 					add_user(hash_user_id, hash_name);
 				}
 				break;
 
 			case FIND:
 				finds = find_user(strtol(par2, NULL, 10));
-				strcpy(out_buff, finds->name);
+				if (finds != NULL){
+					printf("NOW IN FIND SWITCH \n");
+					strcpy(out_buff, finds->name);
+				}
+				else{
+					strcpy(out_buff,"key  NOT FOUND!");
+				}
 				break;
 			case INSERT:
+				finds = find_user(strtol(par2, NULL, 10));
+				if (finds == NULL){
+
+					strcpy(out_buff, "The key you want to insert doesn't in MMDB\n .......Inerting now......\n");
+				}
+				else{
+					strcpy(out_buff,"key already EXIST!!!\n!");
+				}
+				*insertkey = strtol(par2,NULL,10);
+				printf("inserkey = %ld",*insertkey);
+                ret = ttree_insert(&ttree, insertkey);
+                strcpy(hash_name,par3);
+                hash_user_id = strtol(par2,NULL,10);
+				add_user(hash_user_id,hash_name);
+//                if (ifret < 0) {
+//
+//                    fprintf(sockfd, "Failed to insert  key %ld! [ERR=%d]\n",  strtol(par2,NULL,100), );
+//
+//                }
+
 				////insert to ttree ,& insert to hash_table////
+				break;
+			case DELETE:
+
+
+				*insertkey = strtol(par2,NULL,10);
+				printf("key  %ld deleted ! ",*insertkey);
+				finds = find_user(*insertkey);
+
+
+
+				ttree_delete(&ttree,&insertkey);
+				delete_user(finds);
+				res = ttree_delete(&ttree,insertkey);
+				if (res == NULL) {
+					strcpy(out_buff,"Failed to delete item %d on step %d");
+				}
+
+
+
 				break;
 			case OPENFILE:
 				/////open /home/vory/programing/c/key_value_mmdb_via_tcp_server/xlarge.del
 				fp = fopen("/home/vory/programing/c/key_value_mmdb/xlarge.del", "r");
 				break;
-		}
 
-		// print buffer which contains the client contents
-		if (!strcmp(buff,"aaa")){
-		    printf("feawfea");
+            case UNKNOW:
+                break;
 		}
-		else{
-		    printf("qqqqqq");
-		}
+        free(par1);
+        free(par2);
+        free(par3);
 
-		write(sockfd, out_buff, sizeof(buff));
+		printf("out_buff is %s\n",out_buff);
+		send(sockfd,out_buff,1000,0);
 
-		bzero(buff, MAX);
-		n = 0;
+
 		// copy server message in the buffer
-
-		while ((buff[n++] = getchar()) != '\n') ;
-
 		// and send that buffer to client
-		write(sockfd, buff, sizeof(buff));
-
 		// if msg contains "Exit" then server exit and chat ended.
-		if (strncmp("exit", buff, 4) == 0) {
+		if (strncmp("EXIT", in_buff, 4) == 0) {
 			printf("Server Exit...\n");
 			break;
 		}
+		printf("a for loop end here \n________________________________________\n");
 	}
 }
+
+/////////////////////////////////////////IN MAIN()    HERE   //////////////////////////////////////////////////////////
 long int num_keys = 12278;
 // Driver function
+
 int main()
 {
-	int i, ret;
-	Ttree ttree;
-	TtreeNode *tnode;
-	char * token;
-	char * delim;
-	char * zero;
-	zero = "\0";
-	delim = ",";
-	int icount = 0;
+	int i;
+	int ret;
 
+	insertkey = (long int *)malloc(20*sizeof(long int));
+	memset(insertkey,0, 20*sizeof(long int));
+
+	TtreeNode *tnode;
 	struct hash_struct *s;
 	all_items = calloc(num_keys, sizeof(all_items));
-	printf("Inserting keys to the tree...\n");
-
+//	printf("Inserting keys to the tree...\n");
 	 fp = fopen("/home/vory/programing/c/key_value_mmdb_via_tcp/xlarge.del", "r");
-
 	file_line = malloc(1000*sizeof(char));
-
 	memset(file_line,0, 1000*sizeof(char));
-
 	while (fgets(file_line, 1000, fp)){
-		printf("file_line:%s",file_line);
+//		printf("file_line:%s",file_line);
 		parse_file(file_line);
-		printf("par0:%s\n",parf0);
-		printf("par1:%s\n",parf1);
+//		printf("par0:%s\n",parf0);
+//		printf("par1:%s\n",parf1);
 		all_items[bcount].key = strtol(parf0, NULL, 10);
-		bcount++;
-		printf("bcount:\t%d\n",bcount);
+//		bcount++;
+//		printf("bcount:\t%d\n",bcount);
 		hash_name =malloc(500* sizeof(char));
 		memset(hash_name,0,500* sizeof(char));
 		hash_user_id = strtol(parf0, NULL, 10);
 		strcpy(hash_name, parf1);
-		printf("hash_user_id\t%ld,\t\thash_name \t%s\n", hash_user_id, hash_name);
+//		printf("hash_user_id\t%ld,\t\thash_name \t%s\n", hash_user_id, hash_name);
 		s = find_user(hash_user_id);
 		if(s == NULL){ add_user(hash_user_id, hash_name); }
 		free(hash_name);
@@ -167,7 +210,7 @@ int main()
 	for (i = 0; i < num_keys; i++) {
 		printf("%ld ", all_items[i].key);
 	}
-	////////////print all key;
+	////////////print all key;/////////////////////////
 
 	ret = ttree_init(&ttree, 8, false, __cmpfunc, struct item, key);
 	if (ret < 0) {
@@ -176,22 +219,14 @@ int main()
 		exit(EXIT_FAILURE);
 	}
 
-
-
 	for (i = 0; i < num_keys; i++) {
-		printf("fea\n");
-
 		ret = ttree_insert(&ttree, &all_items[i]);
-
-		printf("aaaInserting keys to the tree...\n");
-
 		if (ret < 0) {
 			fprintf(stderr, "Failed to insert item %d with key %ld! [ERR=%d]\n", i, all_items[i].key, ret);
 			free(all_items);
 			exit(EXIT_FAILURE);
 		}
 	}
-
 
 //     srandom(time(NULL));
 //     printf("Generating %d random numbers...\n", num_keys);
@@ -215,24 +250,17 @@ int main()
 		tnode = tnode->successor;
 	}
 	printf("}\n");
-
 //    HASH_FIND_INT(struct hash_struct,1,stdout);
 //	char *in;
 //	in = malloc(sizeof(long int));
 //	fputs("feafawfa:\n", stdout);
 //	fgets(in, sizeof(long int), stdin);
-
 //
 //	s = find_user(strtol(in, NULL, 10));
 //	if (s != NULL) printf("%s", s->name);
 //
 //	server_main();
 //
-
-
-
-
-
 
 	///////////////////
 	int sockfd, connfd, len;
@@ -281,8 +309,6 @@ int main()
 
 	// Function for chatting between client and server
 	func(connfd);
-
-
 
 	// After chatting close the socket
 	close(sockfd);

@@ -21,15 +21,17 @@ enum commands{
     INIT = 0,
     FIND,
     INSERT,
-    OPENFILE
+    DELETE,
+    OPENFILE,
+    UNKNOW
 };
 char * file_line;
-
+char * copy_string;
 enum commands COMMANDS;
-char par1[50];
-char par2[50];
-char par3[50];
+char * par1;
+char * par2;
+char * par3;
 
-
+long int * insertkey;
 
 #endif //__TTREEBUFFER_H__

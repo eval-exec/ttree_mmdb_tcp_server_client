@@ -23,6 +23,11 @@ void add_user(long int user_id, char *name) {
     strcpy(s->name, name);
 }
 
+void delete_user(struct hash_struct *user) {
+    HASH_DEL(test1_users, user);  /* user: pointer to deletee */
+    free(user);             /* optional; it's up to you! */
+}
+
 struct hash_struct *find_user(long int user_id)
 {
     struct hash_struct *s;

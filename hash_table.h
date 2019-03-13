@@ -14,6 +14,8 @@ struct hash_struct {
 struct hash_struct *finds;
 struct hash_struct *test1_users;
 void add_user(long int user_id, char *name);
+void delete_user(struct hash_struct *user);
+
 struct hash_struct *find_user(long int user_id);
 
 
