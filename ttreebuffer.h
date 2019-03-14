@@ -23,6 +23,7 @@ enum commands{
     INSERT,
     DELETE,
     OPENFILE,
+    PRINT,
     UNKNOW
 };
 char * file_line;

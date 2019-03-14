@@ -144,6 +144,10 @@ void func(int sockfd)
 				/////open /home/vory/programing/c/key_value_mmdb_via_tcp_server/xlarge.del
 				fp = fopen("/home/vory/programing/c/key_value_mmdb/xlarge.del", "r");
 				break;
+            case PRINT:
+
+
+                break;
 
             case UNKNOW:
                 strcpy(out_buff,"Recived an unknow commands");
