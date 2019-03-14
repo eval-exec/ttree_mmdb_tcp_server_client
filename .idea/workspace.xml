@@ -12,22 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cd72c10e-bc9a-4b8a-ae32-0730d3f05557" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/C.includecache" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/C.includecache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/hash_table.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/hash_table.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/main.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/main.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/server_misc.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/server_misc.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/ttree.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/ttree.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/ttreebuffer.c.o" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/key_value_mmdb_via_tcp.dir/ttreebuffer.c.o" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/key_value_mmdb_via_tcp" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/key_value_mmdb_via_tcp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hash_table.c" beforeDir="false" afterPath="$PROJECT_DIR$/hash_table.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hash_table.h" beforeDir="false" afterPath="$PROJECT_DIR$/hash_table.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server_misc.h" beforeDir="false" afterPath="$PROJECT_DIR$/server_misc.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ttree.h" beforeDir="false" afterPath="$PROJECT_DIR$/ttree.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ttreebuffer.c" beforeDir="false" afterPath="$PROJECT_DIR$/ttreebuffer.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ttreebuffer.h" beforeDir="false" afterPath="$PROJECT_DIR$/ttreebuffer.h" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -42,8 +27,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.c">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="426">
-              <caret line="138" column="36" selection-start-line="138" selection-start-column="36" selection-end-line="138" selection-end-column="36" />
+            <state relative-caret-position="300">
+              <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -55,7 +40,7 @@
         <entry file="file://$PROJECT_DIR$/ttree.c">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="229">
-              <caret line="704" lean-forward="true" selection-start-line="704" selection-end-line="704" />
+              <caret line="704" selection-start-line="704" selection-end-line="704" />
             </state>
           </provider>
         </entry>
@@ -111,7 +96,7 @@
         <entry file="file://$PROJECT_DIR$/hash_table.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="269">
-              <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+              <caret line="17" selection-start-line="17" selection-end-line="17" />
             </state>
           </provider>
         </entry>
@@ -120,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/uthash.h">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
-              <caret line="453" column="3" lean-forward="true" selection-start-line="453" selection-start-column="3" selection-end-line="453" selection-end-column="3" />
+              <caret line="453" column="3" selection-start-line="453" selection-start-column="3" selection-end-line="453" selection-end-column="3" />
               <folding>
                 <element signature="e#1213#1263#0" expanded="true" />
                 <element signature="e#7595#9344#0" expanded="true" />
@@ -248,12 +233,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1552404243945</updated>
-      <workItem from="1552404246055" duration="49867000" />
+      <workItem from="1552404246055" duration="51552000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="49867000" />
+    <option name="totallyTimeSpent" value="51552000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -272,7 +257,7 @@
       <window_info id="Favorites" order="1" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.40089086" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.40089086" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3997773" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -282,7 +267,7 @@
       <window_info anchor="bottom" id="CMake" order="9" weight="0.3288889" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.33073497" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Messages" order="12" visible="true" weight="0.32962137" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.32962137" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -406,7 +391,7 @@
     <entry file="file://$PROJECT_DIR$/uthash.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
-          <caret line="453" column="3" lean-forward="true" selection-start-line="453" selection-start-column="3" selection-end-line="453" selection-end-column="3" />
+          <caret line="453" column="3" selection-start-line="453" selection-start-column="3" selection-end-line="453" selection-end-column="3" />
           <folding>
             <element signature="e#1213#1263#0" expanded="true" />
             <element signature="e#7595#9344#0" expanded="true" />
@@ -427,21 +412,21 @@
     <entry file="file://$PROJECT_DIR$/hash_table.h">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ttree.c">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="229">
-          <caret line="704" lean-forward="true" selection-start-line="704" selection-end-line="704" />
+          <caret line="704" selection-start-line="704" selection-end-line="704" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/main.c">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="426">
-          <caret line="138" column="36" selection-start-line="138" selection-start-column="36" selection-end-line="138" selection-end-column="36" />
+        <state relative-caret-position="300">
+          <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

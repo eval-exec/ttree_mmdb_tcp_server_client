@@ -79,6 +79,8 @@ void func(int sockfd)
 
 		switch (COMMANDS) {
 			case INIT:
+			    strcpy(out_buff,"this module hasn't implemted!,sorry");
+			    break;
 				while (fgets(file_line, 256, fp)){
 					parse_file(file_line);
 					all_items[bcount].key = strtol(parf0, NULL, 10);
@@ -124,13 +126,9 @@ void func(int sockfd)
 				////insert to ttree ,& insert to hash_table////
 				break;
 			case DELETE:
-
-
 				*insertkey = strtol(par2,NULL,10);
 				printf("key  %ld deleted ! ",*insertkey);
 				finds = find_user(*insertkey);
-
-
 
 				ttree_delete(&ttree,&insertkey);
 				delete_user(finds);
@@ -148,6 +146,7 @@ void func(int sockfd)
 				break;
 
             case UNKNOW:
+                strcpy(out_buff,"Recived an unknow commands");
                 break;
 		}
         free(par1);
